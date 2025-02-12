@@ -33,10 +33,25 @@
 配置完成 [LangBot](https://github.com/RockChinQ/LangBot) 主程序后使用管理员账号向机器人发送命令即可安装：
 
 ```
-!plugin get <你的插件发布仓库地址>
+!plugin get https://github.com/Hanschase/PromptOnlineStore
 ```
 或查看详细的[插件安装说明](https://docs.langbot.app/plugin/plugin-intro.html#%E6%8F%92%E4%BB%B6%E7%94%A8%E6%B3%95)
 
 ## 使用
-
+输入!p help或者!pstore help查询帮助<br>
+指令：<br>
+!pstore help   指令帮助<br>
+!pstore list  列出在线列表(normal模式)<br>
+!pstore fs    列出在线列表(full-scenario模式)<br>
+!pstore next  列表翻页<br>
+!pstore <number> 页数翻页<br>
+!pstore get <XXX.json/XXX.yaml/all> 下载指定或全部预设<br>
+(pstore可简写为p)<br>
+=================<br>
+注：<br>
+1.normal模式下载地址为LangBot/data/prompts<br>
+full—scenario模式为LangBot/data/scenario<br>
+2.本插件只提供浏览和下载服务,更换预设请通过!default set指令<br>
+3.如果您有好的预设，欢迎贡献至：<br>
+https://github.com/Hanschase/LangBotPrompts
 <!-- 插件开发者自行填写插件使用说明 -->
