@@ -44,7 +44,7 @@
 !pstore list  列出在线列表(normal模式)<br>
 !pstore fs    列出在线列表(full-scenario模式)<br>
 !pstore next  列表翻页<br>
-!pstore <number> 页数翻页<br>
+!pstore <数字> 页数翻页<br>
 !pstore get <XXX.json/XXX.yaml/all> 下载指定或全部预设<br>
 (pstore可简写为p)<br>
 =================<br>
