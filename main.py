@@ -8,7 +8,7 @@ import aiohttp
 base_url = "https://api.github.com/repos/Hanschase/LangBotPrompts/contents"
 
 # 注册插件
-@register(name="PromptOnlineStore", description="LangBot的Prompt在线仓库,使用指令!pstore获取相关信息,欢迎贡献新提示词：https://github.com/Hanschase/LangBotPrompts", version="0.1", author="Hanschase")
+@register(name="PromptOnlineStore", description="LangBot的Prompt在线仓库,使用指令!pstore获取相关信息,欢迎贡献新提示词：https://github.com/Hanschase/LangBotPrompts", version="0.2", author="Hanschase")
 class MyPlugin(BasePlugin):
     # 插件加载时触发
     def __init__(self, host: APIHost):
@@ -42,9 +42,8 @@ full—scenario模式为LangBot/data/scenario
 3.如果您有好的预设，欢迎贡献至：
 https://github.com/Hanschase/LangBotPrompts
         """
-        mcommand = ctx.event.command
-        commands = ctx.event.text_message.split()
-        if mcommand == "pstore" or "p":
+        if ctx.event.command == "pstore" or ctx.event.command == "p":
+            commands = ctx.event.text_message.split()
             ctx.prevent_default()
             ctx.prevent_postorder()
             target_type = ctx.event.launcher_type
@@ -89,7 +88,6 @@ https://github.com/Hanschase/LangBotPrompts
                 else:
                     await ctx.send_message(target_type, target_id,
                                            ["请确保您输入了正确的指令，如有不明白请输入!pstore help查询帮助"])
-
             else:
                 await ctx.send_message(target_type, target_id, ["请输入!pstore help查询提示词在线仓库插件帮助！"])
 
