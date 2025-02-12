@@ -8,7 +8,7 @@ import aiohttp
 base_url = "https://api.github.com/repos/Hanschase/LangBotPrompts/contents"
 
 # 注册插件
-@register(name="PromptOnlineStore", description="LangBot的Prompt在线仓库,使用指令!pstore获取相关信息,欢迎贡献新提示词：https://github.com/Hanschase/LangBotPrompts", version="0.2", author="Hanschase")
+@register(name="PromptOnlineStore", description="LangBot的Prompt在线仓库,使用指令!pstore获取相关信息,欢迎贡献新提示词：https://github.com/Hanschase/LangBotPrompts", version="0.1", author="Hanschase")
 class MyPlugin(BasePlugin):
     # 插件加载时触发
     def __init__(self, host: APIHost):
@@ -143,9 +143,10 @@ https://github.com/Hanschase/LangBotPrompts
                     except Exception as e:
                         self.ap.logger.warning(f"下载预设文件{pname}时发生错误：{e}")
                 download_path = os.path.join(os.getcwd(), f'data/{self.ptype}')
+                await self.ap.reload(scope="provider")
                 await ctx.send_message(target_type, target_id, [f"已成功下载，本次下载共计文件{num}个\n",
                                                                              f"储存地址：{download_path}\n",
-                                                                             f"请使用 !defualt set <预设名>以配置预设"])
+                                                                             f"请使用 !default set <预设名>以配置预设"])
                 return
             for file in contents:
                 if pname == file["name"]:
@@ -159,9 +160,10 @@ https://github.com/Hanschase/LangBotPrompts
                                 with open(f"data/{self.ptype}/{pname}", "wb") as f:
                                     f.write(content)
                         download_path= os.path.join(os.getcwd(), f'data/{self.ptype}/{pname}')
+                        await self.ap.reload(scope="provider")
                         await ctx.send_message(target_type, target_id, [f"已成功下载 {pname}\n",
                                                                         f"储存地址：{download_path}\n"
-                                                                        f"请使用 !defualt set {pname.split('.')[0]} 以配置预设"])
+                                                                        f"请使用 !default set {pname.split('.')[0]} 以配置预设"])
                     except Exception as e:
                         await ctx.send_message(target_type, target_id, [f"发生了一个错误：{e}"])
             if not found:
