@@ -50,7 +50,7 @@
 =================<br>
 注：<br>
 1.normal模式下载地址为LangBot/data/prompts<br>
-full—scenario模式为LangBot/data/scenario<br>
+full-scenario模式为LangBot/data/scenario<br>
 2.本插件只提供浏览和下载服务,更换预设请通过!default set指令<br>
 3.如果您有好的预设，欢迎贡献至：<br>
 https://github.com/Hanschase/LangBotPrompts
