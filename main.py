@@ -79,7 +79,8 @@ https://github.com/Hanschase/LangBotPrompts
                     else:
                         await ctx.send_message(target_type,target_id,["请确保您输入了正确的格式：!pstore get <XXX.json/XXX.yaml/all>"])
                 elif commands[1].isdigit():
-                    if commands[1]>self.total_page:
+                    now_page = int(commands[1])
+                    if now_page>self.total_page:
                         await ctx.send_message(target_type,target_id,[f"请输入1-{self.total_page}的整数"])
                     else:
                         self.page = int(commands[1])
